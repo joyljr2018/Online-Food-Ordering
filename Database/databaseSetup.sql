@@ -1,4 +1,4 @@
-CREATE TABLE 'products_info' (
+CREATE TABLE products_info' (
     'product_id' VARCHAR(32) NOT NULL,
     'product_name' VARCHAR(64) NOT NULL,
     'product_price' DECIMAL(8,2) NOT NULL,

@@ -1,0 +1,9 @@
+2019-03-31 18:47:15.447  INFO 13028 --- [main] com.jjsushi.sell.LoggerTest              : Starting LoggerTest on SC-201709280132 with PID 13028 (started by Administrator in C:\Users\Administrator\Desktop\JJSushi\JJSushi-Online-Food-Ordering\project)
+2019-03-31 18:47:15.448 DEBUG 13028 --- [main] com.jjsushi.sell.LoggerTest              : Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2019-03-31 18:47:15.448  INFO 13028 --- [main] com.jjsushi.sell.LoggerTest              : No active profile set, falling back to default profiles: default
+2019-03-31 18:47:17.083  INFO 13028 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-03-31 18:47:17.379  INFO 13028 --- [main] com.jjsushi.sell.LoggerTest              : Started LoggerTest in 2.504 seconds (JVM running for 3.517)
+2019-03-31 18:47:17.697 DEBUG 13028 --- [main] com.jjsushi.sell.LoggerTest              : debug...
+2019-03-31 18:47:17.697  INFO 13028 --- [main] com.jjsushi.sell.LoggerTest              : name:JJsushi,password:123456
+2019-03-31 18:47:17.698 ERROR 13028 --- [main] com.jjsushi.sell.LoggerTest              : error...
+2019-03-31 18:47:17.702  INFO 13028 --- [Thread-1] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
