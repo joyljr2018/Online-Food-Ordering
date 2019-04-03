@@ -1,6 +1,7 @@
 package com.jjsushi.sell.service;
 
 import com.jjsushi.sell.dao.ProductInfo;
+import com.jjsushi.sell.dto.CartDTO;
 import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.Pageable;
@@ -18,6 +19,8 @@ public interface ProductInFoService {
     ProductInfo save(ProductInfo productInfo);
 
     // add stock
-    // minus stock
+    void increaseStock(List<CartDTO> cartDTOList);
 
+    // minus stock
+    void decreaseStock(List<CartDTO> cartDTOList);
 }
