@@ -6,9 +6,7 @@ spring:
     url: jdbc:mysql://10.0.0.36/sell?characterEncoding=utf-8&useSSL=false
   jpa:
     show-sql: true
-
 server:
   servlet:
     context-path: /sell
-
 #    com.jjsushi.sell.LoggerTest: debug
