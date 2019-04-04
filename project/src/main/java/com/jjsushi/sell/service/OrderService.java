@@ -1,6 +1,7 @@
 package com.jjsushi.sell.service;
 
 import com.jjsushi.sell.dto.OrderDTO;
+import org.hibernate.criterion.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -16,6 +17,7 @@ public interface OrderService {
     /** cancel order*/
     OrderDTO cancel(OrderDTO orderDTO);
     /** finish order*/
+    OrderDTO finish(OrderDTO orderDTO);
     OrderDTO paid(OrderDTO orderDTO);
 
 
