@@ -5,6 +5,7 @@ import com.jjsushi.sell.dto.OrderDTO;
 import com.jjsushi.sell.enums.ResultEnum;
 import com.jjsushi.sell.exception.SellException;
 import com.jjsushi.sell.form.OrderForm;
+import com.jjsushi.sell.service.BuyerService;
 import com.jjsushi.sell.service.OrderService;
 import com.jjsushi.sell.utils.ResultVOUtil;
 import com.jjsushi.sell.vo.ResultVO;
@@ -26,7 +27,8 @@ import java.util.Map;
 @RequestMapping("/buyer/order")
 @Slf4j
 public class BuyerOrderController {
-
+    @Autowired
+    private BuyerService buyerService;
     @Autowired
     private OrderService orderService;
     // Create Order
@@ -56,8 +58,7 @@ public class BuyerOrderController {
             log.error("[order list] openid is empty openid:{}",openId);
             throw new SellException(ResultEnum.PARAM_ERROR);
         }
-        PageRequest request = new PageRequest(page,size);
-        Page<OrderDTO> orderDTOPage=orderService.findList(openId,request);
+        Page<OrderDTO> orderDTOPage=orderService.findList(openId,PageRequest.of(page,size));
 
         return ResultVOUtil.success(orderDTOPage.getContent());
     }
@@ -65,8 +66,8 @@ public class BuyerOrderController {
     // Order Detail
     @GetMapping("/detail")
     public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid, @RequestParam("orderId") String orderId){
-        //TODO security check
-        OrderDTO orderDTO=orderService.findOne(orderId);
+
+        OrderDTO orderDTO= buyerService.findOrderOne(openid, orderId);
         return ResultVOUtil.success(orderDTO);
     }
 
@@ -74,8 +75,8 @@ public class BuyerOrderController {
     // Cancel Order
     @PostMapping("/cancel")
     public ResultVO cancel(@RequestParam("openid") String openid, @RequestParam("orderId") String orderId){
-        //TODO Security check
-        OrderDTO orderDTO=orderService.findOne(orderId);
+
+        OrderDTO orderDTO=buyerService.canelOrder(openid,orderId);
         orderService.cancel(orderDTO);
         return ResultVOUtil.success();
 

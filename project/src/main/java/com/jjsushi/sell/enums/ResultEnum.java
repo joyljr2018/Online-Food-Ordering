@@ -14,7 +14,8 @@ public enum ResultEnum {
     ORDER_UPDATE_FAIL(15,"Failed to update the order"),
     ORDER_DETAIL_EMPTY(16,"Order detail is empty"),
     ORDER_PAY_STATUS_ERROR(17,"Incorrect payment status"),
-    CART_EMPTY(18,"Cart is empty")
+    CART_EMPTY(18,"Cart is empty"),
+    ORDER_OWNER_ERROR(19,"order doesn't belong to the user")
 
     ;
     private Integer code;
