@@ -14,3 +14,7 @@ server:
     context-path: /sell
 
 #    com.jjsushi.sell.LoggerTest: debug
+
+wechat:
+  mpAppId: wxa43b862c395e6042
+  mpAppSecret: 6c7949d11ce09805414e5639b32373b5

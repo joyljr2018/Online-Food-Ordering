@@ -15,7 +15,8 @@ public enum ResultEnum {
     ORDER_DETAIL_EMPTY(16,"Order detail is empty"),
     ORDER_PAY_STATUS_ERROR(17,"Incorrect payment status"),
     CART_EMPTY(18,"Cart is empty"),
-    ORDER_OWNER_ERROR(19,"order doesn't belong to the user")
+    ORDER_OWNER_ERROR(19,"order doesn't belong to the user"),
+    WX_MP_ERROR(20,"Wechat account error"),
 
     ;
     private Integer code;
