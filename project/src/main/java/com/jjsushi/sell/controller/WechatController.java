@@ -45,6 +45,9 @@ public class WechatController {
         WxMpOAuth2AccessToken wxMpOAuth2AccessToken= wxMpService.oauth2getAccessToken(code);
 
         String openid = wxMpOAuth2AccessToken.getOpenId();
+
+        returnUrl = "http://10.0.0.36/#/";
+        log.info("[Wechat web authroize] redirect: {}",returnUrl);
         return "redirect:"+ returnUrl +"?openid="+openid;
     }
 }

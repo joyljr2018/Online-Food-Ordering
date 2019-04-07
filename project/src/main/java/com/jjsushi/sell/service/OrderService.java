@@ -18,7 +18,10 @@ public interface OrderService {
     OrderDTO cancel(OrderDTO orderDTO);
     /** finish order*/
     OrderDTO finish(OrderDTO orderDTO);
+
     OrderDTO paid(OrderDTO orderDTO);
 
+    /** check all order list*/
+    Page<OrderDTO> findList(Pageable pageable);
 
 }
