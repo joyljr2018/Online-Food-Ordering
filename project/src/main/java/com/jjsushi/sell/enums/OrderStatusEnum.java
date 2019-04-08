@@ -3,7 +3,7 @@ package com.jjsushi.sell.enums;
 import lombok.Getter;
 
 @Getter
-public enum OrderStatusEnum {
+public enum OrderStatusEnum implements CodeEnum{
     NEW(0,"New Order"),
     FINISHED(1,"Finished Order"),
     CANCEL(2,"Canceled Order"),
