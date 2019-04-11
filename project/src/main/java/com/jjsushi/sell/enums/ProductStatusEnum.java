@@ -3,7 +3,7 @@ package com.jjsushi.sell.enums;
 import lombok.Getter;
 
 @Getter
-public enum ProductStatusEnum {
+public enum ProductStatusEnum implements CodeEnum {
     UP(0,"In stock"),
     DOWND(1,"Out of stock")
     ;

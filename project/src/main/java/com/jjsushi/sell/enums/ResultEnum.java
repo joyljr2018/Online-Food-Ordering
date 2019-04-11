@@ -18,7 +18,8 @@ public enum ResultEnum {
     ORDER_OWNER_ERROR(19,"order doesn't belong to the user"),
     WX_MP_ERROR(20,"Wechat account error"),
     WXPAY_NOTIFY_MONEY_VERIFY_ERROR(21, "Failed to synchronize the wechat payment"),
-    ORDER_CANCEL_SUCCESS(22,"Order canceled")
+    ORDER_CANCEL_SUCCESS(22,"Order canceled"),
+    ORDER_FINISH_SUCCESS(23,"Order finished")
 
     ;
     private Integer code;

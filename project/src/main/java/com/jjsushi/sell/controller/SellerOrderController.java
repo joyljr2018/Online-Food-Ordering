@@ -5,7 +5,6 @@ import com.jjsushi.sell.dto.OrderDTO;
 import com.jjsushi.sell.enums.ResultEnum;
 import com.jjsushi.sell.exception.SellException;
 import com.jjsushi.sell.service.OrderService;
-import com.lly835.bestpay.rest.type.Get;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -91,5 +90,21 @@ public class SellerOrderController {
 
         return new ModelAndView("order/detail",map);
     }
+    @GetMapping("/finish")
+    public ModelAndView finished(@RequestParam("orderId") String orderId, Map<String,Object> map){
+        try{
+            OrderDTO orderDTO= orderService.findOne(orderId);
+            orderService.finish(orderDTO);
+        }catch(SellException e){
+            log.error("[Seller side finish order] exception{}",e);
+            map.put("msg",e.getMessage());
+            map.put("url","/seller/seller/order/list");
+            return new ModelAndView("common/error",map);
 
+
+        }
+        map.put("msg",ResultEnum.ORDER_FINISH_SUCCESS.getMessage());
+        map.put("url","/sell/seller/order/list");
+        return new ModelAndView("common/success",map);
+    }
 }

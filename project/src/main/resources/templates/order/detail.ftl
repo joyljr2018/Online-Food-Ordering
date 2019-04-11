@@ -60,11 +60,23 @@
                 <tbody>
                 <#list orderDTO.orderDetailList as orderDetail>
                     <tr>
-                        <td></td>
+                        <td>${orderDetail.productId}</td>
+                        <td>${orderDetail.productName}</td>
+                        <td>${orderDetail.productPrice}</td>
+                        <td>${orderDetail.productQuantity}</td>
+                        <td>${orderDetail.productQuantity * orderDetail.productPrice}</td>
                     </tr>
+
                 </#list>
                 </tbody>
             </table>
+        </div>
+        <div class="col-md-12 column">
+            <#if orderDTO.getOrderStatusEnum().message=="New Order">
+                <a href="/sell/seller/order/finish?orderId=${orderDTO.orderId}" button type="button" class="btn btn-default">Finish Order</abutton></a>
+                <a href="/sell/seller/order/cancel?orderId=${orderDTO.orderId}" button type="button" class="btn btn-default">Cancel Order</abutton></a>
+            </#if>
+
         </div>
     </div>
 </div>

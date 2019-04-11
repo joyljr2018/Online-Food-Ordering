@@ -13,28 +13,31 @@
                             <thead>
                             <tr>
                                 <th>
-                                    Order ID
+                                    Product ID
                                 </th>
                                 <th>
                                     Name
                                 </th>
                                 <th>
-                                    Phone number
+                                    Icon
                                 </th>
                                 <th>
-                                    Address
+                                    Price
                                 </th>
                                 <th>
-                                    Pay Amount
+                                    Stock
                                 </th>
                                 <th>
-                                    Order status
+                                    Description
                                 </th>
                                 <th>
-                                    Payment status
+                                    Category
                                 </th>
                                 <th>
-                                    Order create time
+                                    Create time
+                                </th>
+                                <th>
+                                    Update time
                                 </th>
                                 <th colspan="2">
                                     Process
@@ -42,43 +45,49 @@
                             </tr>
                             </thead>
                             <tbody>
-                    <#list orderDTOPage.content as orderDTO>
+                    <#list productInfoPage.content as productInfo>
 
 
 
 
                     <tr>
                         <td>
-                            ${orderDTO.getOrderId()}
+                            ${productInfo.productId}
                         </td>
                         <td>
-                            ${orderDTO.buyerName}
+                            ${productInfo.productName}
                         </td>
                         <td>
-                            ${orderDTO.buyerPhone}
-                        </td>
-                        <td>
-                            ${orderDTO.buyerAddress}
-                        </td>
-                        <td>
-                            ${orderDTO.orderAmount}
-                        </td>
-                        <td>
-                            ${orderDTO.getOrderStatusEnum()}
-                        </td>
-                        <td>
-                            ${orderDTO.getPaymentStatusEnum()}
-                        </td>
-                        <td>
-                            ${orderDTO.createTime}
-                        </td>
+                            <img heigh="100" width="100" src="${productInfo.productIcon}" alt="">
 
+                        </td>
                         <td>
-                            <a href="/sell/seller/order/detail?orderId=${orderDTO.orderId}">Detail</a></td>
+                            ${productInfo.productPrice}
+                        </td>
                         <td>
-                            <#if orderDTO.getOrderStatusEnum().message=="New Order">
-                                <a href="/sell/seller/order/cancel?orderId=${orderDTO.orderId}">Cancel</a>
-                            </#if></td>
+                            ${productInfo.productStock}
+                        </td>
+                        <td>
+                            ${productInfo.productDescription}
+                        </td>
+                        <td>
+                            ${productInfo.categoryType}
+                        </td>
+                        <td>
+                            ${productInfo.createTime}
+                        </td>
+                        <td>
+                            ${productInfo.updateTime}
+                        </td>
+                        <td>
+                            <a href="/sell/seller/product/index?productId=${productInfo.productId}">Edit</a></td>
+                        <td>
+                                <#if productInfo.getProductStatus()==   0>
+                                <a href="/sell/seller/product/off_sale?productId=${productInfo.productId}">Down</a>
+                                <#else>
+                                <a href="/sell/seller/product/on_sale?productId=${productInfo.productId}">Up</a>
+                                </#if>
+                            </td>
                     </tr>
                     </#list>
                             </tbody>
@@ -98,20 +107,20 @@
                                 </li>
                 </#if>
 
-                <#list 1..orderDTOPage.getTotalPages() as index>
+                <#list 1..productInfoPage.getTotalPages() as index>
                     <#if currentPage==index>
                     <li class="disabled"><a href="#">${index}</a></li>
                     <#else>
-                      <li><a href="/sell/seller/order/list?page=${index}&size=${orderDTOPage.size}">${index}</a></li>
+                      <li><a href="/sell/seller/order/list?page=${index}&size=${productInfoPage.size}">${index}</a></li>
                     </#if>
                 </#list>
-                                <#if currentPage gte orderDTOPage.getTotalPages()>
+                                <#if currentPage gte productInfoPage.getTotalPages()>
                                                     <li class="disabled">
                                                         <a href="#">Next</a>
                                                     </li>
                                 <#else>
                                 <li>
-                                    <a href="/sell/seller/order/list?page=${currentPage+1}&size=${orderDTOPage.size}">Next</a>
+                                    <a href="/sell/seller/order/list?page=${currentPage+1}&size=${productInfoPage.size}">Next</a>
                                 </li>
                                 </#if>
 
