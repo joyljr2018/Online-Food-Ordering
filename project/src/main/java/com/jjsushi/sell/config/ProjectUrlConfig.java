@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 
 @Data
-@ConfigurationProperties(prefix = "projectUrl")
+@ConfigurationProperties(prefix = "projecturl")
 @Component
 public class ProjectUrlConfig {
 
