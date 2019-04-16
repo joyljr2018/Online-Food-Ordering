@@ -23,4 +23,10 @@ public interface ProductInFoService {
 
     // minus stock
     void decreaseStock(List<CartDTO> cartDTOList);
+
+    // back to sell
+    ProductInfo onSale(String productId);
+
+    // off
+    ProductInfo offSale(String productId);
 }
