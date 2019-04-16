@@ -19,13 +19,9 @@ public enum ResultEnum {
     WX_MP_ERROR(20,"Wechat account error"),
     WXPAY_NOTIFY_MONEY_VERIFY_ERROR(21, "Failed to synchronize the wechat payment"),
     ORDER_CANCEL_SUCCESS(22,"Order canceled"),
-    ORDER_FINISH_SUCCESS(23,"Order finished"),
-    PRODUCT_STATUS_ERROR(24,"Product status error"),
-    LOGIN_FAIL(25, "Login failed, incorrect "),
+    ORDER_FINISH_SUCCESS(23,"Order finished")
 
-    LOGOUT_SUCCESS(26, "logout success"),
     ;
-
     private Integer code;
 
     private String message;
