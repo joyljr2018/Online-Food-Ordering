@@ -4,10 +4,15 @@ spring:
     username: root
     password: 7792347a
     url: jdbc:mysql://127.0.0.1:3306/sell?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+
   jpa:
     show-sql: true
   jackson:
     default-property-inclusion: non_null
+  redis:
+    sentinel:
+      host: 10.0.0.36
+      port: 6379
 
 server:
   servlet:
@@ -22,3 +27,6 @@ wechat:
   mchKey:
   keyPath:
   notifyUrl:
+
+projecturl:
+  sell: http://localhost:8080

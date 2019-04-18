@@ -6,5 +6,5 @@ import com.jjsushi.sell.dao.SellerInfo;
 public interface SellerService {
 
 
-    SellerInfo findSellerInfoByOpenid(String openid);
+    SellerInfo findSellerInfoByUsername(String username);
 }

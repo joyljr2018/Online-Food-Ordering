@@ -23,7 +23,7 @@ import java.util.Map;
 @Slf4j
 @Controller
 @RequestMapping("/seller/category")
-public class CategoryController {
+public class SellerCategoryController {
     @Autowired
     private CategoryService categoryService;
     @GetMapping("/list")
@@ -33,14 +33,13 @@ public class CategoryController {
         return new ModelAndView("category/list",map);
     }
     @GetMapping("/index")
-    public ModelAndView index(@RequestParam(value="categoryId", required=false) Integer categoryId, Map<String,Object> map){
+    public ModelAndView index(@RequestParam(value="categoryId", required=false,defaultValue = "-1") Integer categoryId, Map<String,Object> map){
         if(categoryId>0){
             ProductCategory productCategory = categoryService.findOne(categoryId);
             map.put("productCategory",productCategory);
         }
         return new ModelAndView("category/index",map);
     }
-
     @PostMapping("/save")
     public ModelAndView save(@Valid CategoryForm form,
                              BindingResult bindingResult,

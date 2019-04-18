@@ -17,5 +17,4 @@ public class SellerInfo {
 
     private String password;
 
-    private String openid;
 }
