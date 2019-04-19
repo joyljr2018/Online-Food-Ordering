@@ -67,7 +67,7 @@ public class SellerUserController {
             return new ModelAndView("common/error");
         }
 
-//        //2. set token to redis
+        //2. set token to redis
         String token = UUID.randomUUID().toString();
         Integer expire = RedisConstant.EXPIRE;
        redisTemplate.opsForValue().set(String.format(RedisConstant.TOKEN_PREFIX, token), username, expire, TimeUnit.SECONDS);

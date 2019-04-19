@@ -121,9 +121,57 @@
         </div>
 
     </div>
+    <div class="modal fade" id="mymodal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        New Message!
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    You got new orders
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button onclick="location.reload()" type="button" class="btn btn-primary">Check new order</button>
+                </div>
+            </div>
 
+        </div>
+
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <#--new order notification-->
+    <script>
+        var websocket =null;
+        if('WebSocket' in window){
+            websocket = new WebSocket('ws://10.0.0.199:8080/sell/webSocket');
+        }
+        else{
+            alert('browser doesn support websocket');
+        }
+        websocket.onopen = function(event){
+            console.log('host connect');
+        }
+        websocket.onclose=function(event){
+            console.log('disconnected');
+        }
+        websocket.onmessage=function(event){
+            console.log('new order'+ event.data);
+            $("#mymodal").modal('show')
+        }
+        websocket.onerror=function(){
+            alert('websocket error');
+        }
+        window.onbeforeunload=function () {
+            websocket.close();
+
+        }
+    </script>
     </body>
-
+</html>
 <#--</html>-->
 <#--<h1>${orderDTOPage.totalPages}</h1>-->
 

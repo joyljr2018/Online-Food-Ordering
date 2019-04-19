@@ -3,6 +3,7 @@ package com.jjsushi.sell.controller;
 
 import com.jjsushi.sell.dao.ProductCategory;
 import com.jjsushi.sell.exception.SellException;
+import com.jjsushi.sell.exception.SellerAuthorizeException;
 import com.jjsushi.sell.form.CategoryForm;
 import com.jjsushi.sell.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.Map;
 
@@ -57,7 +59,7 @@ public class SellerCategoryController {
             }
             BeanUtils.copyProperties(form, productCategory);
             categoryService.save(productCategory);
-        } catch (SellException e) {
+        } catch (SellException  e) {
             map.put("msg", e.getMessage());
             map.put("url", "/sell/seller/category/index");
             return new ModelAndView("common/error", map);

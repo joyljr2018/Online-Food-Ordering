@@ -27,6 +27,7 @@ import java.util.Map;
 @RequestMapping("/buyer/order")
 @Slf4j
 public class BuyerOrderController {
+
     @Autowired
     private BuyerService buyerService;
     @Autowired
@@ -43,6 +44,7 @@ public class BuyerOrderController {
             log.error("[create order] Cart can't be empty orderDTO={}", orderDTO);
             throw new SellException(ResultEnum.CART_EMPTY);
         }
+
         OrderDTO result = orderService.create(orderDTO);
         Map<String,String> map = new HashMap<>();
         map.put("orderId",result.getOrderId());

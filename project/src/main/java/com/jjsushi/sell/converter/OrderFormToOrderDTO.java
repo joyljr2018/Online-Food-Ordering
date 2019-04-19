@@ -1,6 +1,7 @@
 package com.jjsushi.sell.converter;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.jjsushi.sell.dao.OrderDetail;
 import com.jjsushi.sell.dto.OrderDTO;
@@ -14,7 +15,8 @@ import java.util.List;
 @Slf4j
 public class OrderFormToOrderDTO {
     public static OrderDTO convert(OrderForm orderForm){
-        Gson gson = new Gson();
+
+         Gson gson = new Gson();
         OrderDTO orderDTO =new OrderDTO();
         orderDTO.setBuyerName(orderForm.getName());
         orderDTO.setBuyerPhone(orderForm.getPhone());
@@ -22,7 +24,9 @@ public class OrderFormToOrderDTO {
         orderDTO.setBuyerAddress(orderForm.getAddress());
         List<OrderDetail> orderDetailList  = new ArrayList<>();
         try{
-            orderDetailList=gson.fromJson(orderForm.getItems(),new TypeToken<List<OrderDetail>>(){}.getType());
+            orderDetailList = gson.fromJson(orderForm.getItems(),
+                    new TypeToken<List<OrderDetail>>() {
+                    }.getType());
         }catch(Exception e){
             log.error("[Convert target] error, string ={}",orderForm.getItems());
             throw new SellException(ResultEnum.PARAM_ERROR);

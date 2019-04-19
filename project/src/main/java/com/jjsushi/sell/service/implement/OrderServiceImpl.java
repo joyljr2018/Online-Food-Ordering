@@ -1,5 +1,6 @@
 package com.jjsushi.sell.service.implement;
 
+import com.jjsushi.sell.controller.WebSocket;
 import com.jjsushi.sell.converter.OrderManagerToOrderDTO;
 import com.jjsushi.sell.dao.OrderDetail;
 import com.jjsushi.sell.dao.OrderManager;
@@ -27,14 +28,18 @@ import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @Slf4j
 public class OrderServiceImpl implements OrderService {
-
+    @Autowired
+    private WebSocket webSocket;
     @Autowired
     private ProductInFoService productInFoService;
     @Autowired
@@ -78,7 +83,10 @@ public class OrderServiceImpl implements OrderService {
         orderManager.setOrderStatus(OrderStatusEnum.NEW.getCode());
         orderManager.setPayStatus(PayStatusEnum.WAIT.getCode());
         orderManager.setOrderAmount(orderAmount);
-
+        Timestamp ts=new Timestamp(System.currentTimeMillis());
+        Date date=new Date(ts.getTime());
+        orderManager.setCreateTime(date);
+        orderManager.setUpdateTime(date);
         orderManagerRepository.save(orderManager);
 
 //        List<CartDTO> cartDTOList = orderDTO.getOrderDetailList().stream().map(e ->
@@ -86,6 +94,10 @@ public class OrderServiceImpl implements OrderService {
 //        ).collect(Collectors.toList());
         // 4. update stock
         productInFoService.decreaseStock(cartDTOList);
+
+        // send websocket message
+        webSocket.sendMessage("New Order!:"+orderId);
+        webSocket.onMessage("new order:"+orderId);
         return orderDTO;
     }
 

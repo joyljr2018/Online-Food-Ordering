@@ -19,6 +19,6 @@ public class SellExceptionHandler {
     public ModelAndView handlerAuthorizeException() {
         return new ModelAndView("redirect:"
                 .concat(projectUrlConfig.getSell())
-                .concat("/sell/index"));
+                .concat("/sell/seller/index"));
     }
 }
