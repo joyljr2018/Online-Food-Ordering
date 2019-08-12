@@ -1,6 +1,4 @@
 # JJSushi-Online-Food-Ordering-demo
-
-Finshed, waiting to be polish after preparing for interviews.
 <h2>Login Page</h2>
 
 ![Image of login Page](https://github.com/kiss41194377/Online-Food-Ordering/blob/master/Artifacts/project%20demo/login.png)
